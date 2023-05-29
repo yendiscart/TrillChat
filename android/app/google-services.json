@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "125091856521",
+    "firebase_url": "https://trillchat-b7794-default-rtdb.firebaseio.com",
+    "project_id": "trillchat-b7794",
+    "storage_bucket": "trillchat-b7794.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:125091856521:android:cb880af3c2aab65d798658",
+        "android_client_info": {
+          "package_name": "com.trillapp.yendis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "125091856521-eo6q0bal9clrkfukmjbpn898meum644p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEfTOrWByVD8b2TZXQGG50IyLZ_2Hkk0o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "125091856521-eo6q0bal9clrkfukmjbpn898meum644p.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "125091856521-4c6397mvj9v5fqs81fn4b425aopi2bi9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.trillapp.yendis"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

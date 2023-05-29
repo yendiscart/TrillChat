@@ -1,0 +1,110 @@
+name: chat
+description: A new Flutter application.
+
+publish_to: 'none'
+version: 2.4.1
+
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  #COMMON
+  cupertino_icons: ^1.0.5
+  nb_utils: ^4.6.24
+  intl: ^0.17.0
+  html: ^0.15.1
+  flutter_vector_icons: ^2.0.0
+  cached_network_image: ^3.2.2
+  permission_handler: ^10.2.0
+  google_fonts: ^3.0.1
+  google_mobile_ads: ^2.3.0
+  onesignal_flutter: 3.3.2
+  image_crop: any
+  url_launcher: ^6.1.6
+  share: ^2.0.4
+  package_info: ^2.0.2
+  mobx: ^2.1.2
+  flutter_mobx: ^2.0.6+4
+  qr_code_scanner: ^1.0.1
+  device_info_plus: ^8.0.0
+  sqflite: ^2.2.0+3
+  flutter_feed_reaction: ^0.0.5
+
+  #FIREBASE
+  firebase_core: ^2.2.0
+  firebase_auth: ^4.1.2
+  cloud_firestore: ^4.0.5
+  firebase_analytics: ^10.0.5
+  firebase_crashlytics: ^3.0.5
+  firebase_storage: ^11.0.5
+  firebase_database: ^10.0.5
+  paginate_firestore: ^1.0.3+1
+
+  #SIGN_IN
+  google_sign_in: ^5.4.2
+  the_apple_sign_in: ^1.1.1
+  country_code_picker: ^2.0.2
+  otp_text_field: ^1.1.3
+
+  #VIDEO_cALL
+  agora_rtc_engine: ^5.3.0
+
+  #ATTACHMENT
+  image_picker: ^0.8.6
+  file_picker: ^5.2.2
+  just_audio: ^0.9.30
+  video_player: ^2.4.7
+  record: ^4.4.3
+  video_thumbnail: ^0.5.3
+  photo_view: ^0.14.0
+  open_file: ^3.2.1
+  webview_flutter: ^3.0.4
+  badges: ^3.1.1
+
+  #location
+  geolocator: ^9.0.2
+  location: ^4.4.0
+
+  #ENCRYPTION
+  encrypt: ^5.0.1
+
+  flutter_reaction_button: ^2.0.1+2
+
+  flutter_localizations:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^2.3.2
+  mobx_codegen: ^2.1.0
+  #flutter packages pub run build_runner build --delete-conflicting-outputs
+
+dependency_overrides:
+  ffi: ^2.0.1
+  cloud_firestore: ^4.0.5
+  firebase_core: ^2.2.0
+  firebase_core_web: ^2.0.1
+  cloud_firestore_web: ^3.0.5
+#  fluttertoast: 8.0.9
+  modal_bottom_sheet:
+    git:
+      url: https://github.com/danReynolds/modal_bottom_sheet.git
+      path: modal_bottom_sheet
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/sticker/
+    - assets/Wallpaper/bright_wallpaper/
+    - assets/Wallpaper/dark_wallpaper/
+    - assets/Wallpaper/solid_wallpaper/
+    - assets/flags/
+    - lang/
+
+
