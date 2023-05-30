@@ -263,6 +263,8 @@ class ChatListScreenState extends State<ChatListScreen> with WidgetsBindingObser
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
+
+                            textDirection: TextDirection.ltr,
                             children: [
                               Text(
                                 data.name.validate().capitalizeFirstLetter(),
@@ -270,7 +272,19 @@ class ChatListScreenState extends State<ChatListScreen> with WidgetsBindingObser
                                 maxLines: 1,
                                 textAlign: TextAlign.start,
                                 overflow: TextOverflow.ellipsis,
-                              ).expand(),
+                              ),
+                              SizedBox(width: 2.0,),
+                              Visibility(
+                                // if visibility is true, the child
+                                // widget will show otherwise hide
+                                visible: data.isVerified??false,
+                                child: Icon(
+                                  Icons.verified_rounded,
+                                  color: Colors.blue,
+                                  size: 18,
+                                ),
+                              ),
+
                               StreamBuilder<int>(
                                 stream: chatMessageService.getUnReadCount(
                                   senderId: getStringAsync(userId),

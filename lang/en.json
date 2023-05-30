@@ -194,5 +194,24 @@
   "jobs": "Jobs",
   "booking": "Bookings",
   "courier": "Local Courier",
-  "event": "Event Tickets"
+  "event": "Event Tickets",
+  "receive_money": "Receive Money",
+  "send_money": "Send Money",
+  "transfer_money": "Transfer Money",
+  "enter_amount": "Enter amount",
+  "wallet": "Wallet",
+  "money": "Money",
+  "transfer": "Transfer",
+  "pending": "Pending",
+  "approve": "Approve",
+  "reject": "Reject",
+  "transaction_details": "Transaction Details",
+  "operations": "Operations",
+  "top_up": "Top-Up",
+  "withdraw": "Withdraw",
+  "transaction": "Transaction",
+  "payout_message": "Please Enter your email to request for withdraw of funds to your paypal"
+
+
+
   }

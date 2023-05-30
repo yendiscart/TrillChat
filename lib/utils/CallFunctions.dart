@@ -21,7 +21,9 @@ class CallFunctions {
         receiverName: to.name,
         receiverPhotoUrl: to.photoUrl,
         callType: "video",
-        isVoice: false);
+        isVoice: false,
+        isVerifiedCaller: from.isVerified??false,
+        isVerifiedReceiver: to.isVerified??false);
 
     LogModel log = LogModel(
       callerName: from.name,
@@ -31,6 +33,8 @@ class CallFunctions {
       receiverPic: to.photoUrl,
       callType: "video",
       timestamp: DateTime.now().toString(),
+      isVerifiedCaller: from.isVerified??false,
+      isVerifiedReceiver: to.isVerified??false
     );
 
     bool callMade = await callService.makeCall(callModel: callModel);
@@ -53,6 +57,8 @@ class CallFunctions {
       receiverPhotoUrl: to.photoUrl,
       callType: "voice",
       isVoice: true,
+      isVerifiedCaller: from.isVerified??false,
+      isVerifiedReceiver: to.isVerified??false
     );
 
     LogModel log = LogModel(
@@ -63,6 +69,8 @@ class CallFunctions {
       receiverPic: to.photoUrl,
       callType: "voice",
       timestamp: DateTime.now().toString(),
+        isVerifiedCaller: from.isVerified??false,
+        isVerifiedReceiver: to.isVerified??false
     );
 
     bool callMade = await callService.makeCall(callModel: callModel, isVoiceCall: true);

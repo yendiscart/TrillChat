@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:chat/screens/TransferScreen.dart';
+
 import '../../main.dart';
 import '../../models/UserModel.dart';
 import '../../screens/ChatScreen.dart';
@@ -13,10 +15,11 @@ import 'package:nb_utils/nb_utils.dart';
 class UserListComponent extends StatefulWidget {
   final AsyncSnapshot<List<UserModel>>? snap;
   final bool isGroupCreate;
+  final bool isTransferCreate;
   final bool isAddParticipant;
   final List<dynamic>? data;
 
-  UserListComponent({this.snap, this.isGroupCreate = false, this.isAddParticipant = false, this.data});
+  UserListComponent({this.snap, this.isGroupCreate = false,this.isTransferCreate=false, this.isAddParticipant = false, this.data});
 
   @override
   UserListComponentState createState() => UserListComponentState();
@@ -87,7 +90,22 @@ class UserListComponentState extends State<UserListComponent> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('${data.name.validate().capitalizeFirstLetter()}', style: primaryTextStyle()),
+                      Row(
+                        children: [
+                          Text('${data.name.validate().capitalizeFirstLetter()}', style: primaryTextStyle()),
+                          SizedBox(width: 2.0,),
+                          Visibility(
+                            // if visibility is true, the child
+                            // widget will show otherwise hide
+                            visible: data.isVerified??false,
+                            child: Icon(
+                              Icons.verified_rounded,
+                              color: Colors.blue,
+                              size: 18,
+                            ),
+                          )
+                        ],
+                      ),
                       Text('${data.userStatus.validate()}', style: secondaryTextStyle()),
                     ],
                   ).expand(),
@@ -115,7 +133,10 @@ class UserListComponentState extends State<UserListComponent> {
                 }
                 setState(() {});
                 setValue(selectedMember, selected);
-              } else {
+              } else if(widget.isTransferCreate){
+                finish(context);
+                TransferScreen(userTo: data,).launch(context);
+              }else {
                 finish(context);
                 ChatScreen(data).launch(context);
               }

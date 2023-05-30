@@ -42,7 +42,7 @@ List<String> rtlLanguage = ['ar', 'ur'];
 
 const EXCEPTION_NO_USER_FOUND = "EXCEPTION_NO_USER_FOUND";
 
-const adminEmail = "support@yendiscart.com";
+const adminEmail = "admin@yendiscart.com";
 
 //region AdMobIntegration
 const mAdMobAppId = 'ca-app-pub-2345996790151740~3072234018';
@@ -57,7 +57,7 @@ const SEARCH_KEY = "Search";
 const defaultLanguage = 'en';
 const LANGUAGE = "LANGUAGE";
 const SELECTED_LANGUAGE = "SELECTED_LANGUAGE";
-enum MessageType { TEXT, IMAGE, VIDEO, AUDIO, STICKER,DOC,LOCATION ,VOICE_NOTE}
+enum MessageType { TEXT, IMAGE, VIDEO, AUDIO, STICKER,DOC,LOCATION ,VOICE_NOTE,TRANSACTION}
 
 const TEXT = "TEXT";
 const IMAGE = "IMAGE";
@@ -67,6 +67,7 @@ const DOC = "DOC";
 const STICKER = "STICKER";
 const LOCATION = "LOCATION";
 const VOICE_NOTE="VOICE_NOTE";
+const TRANSACTION="TRANSACTION";
 
 extension MessageExtension on MessageType {
   String? get name {
@@ -87,6 +88,8 @@ extension MessageExtension on MessageType {
         return 'STICKER';
       case MessageType.VOICE_NOTE:
         return 'VOICE_NOTE';
+        case MessageType.TRANSACTION:
+        return 'TRANSACTION';
       default:
         return null;
     }
@@ -104,6 +107,7 @@ const GROUP_COLLECTION = 'groups';
 const GROUP_CHATS = 'chats';
 const GROUP_GROUPCHATS = 'groupChats';
 const DEVICE_COLLECTION = 'device';
+const TRANSACTION_COLLECTION = 'transaction';
 
 const USER_PROFILE_IMAGE = "userProfileImage";
 const CHAT_DATA_IMAGES = "chatImages";
@@ -130,6 +134,7 @@ const PER_PAGE_CHAT_COUNT = 50;
 
 //region SharePreference Key
 const IS_LOGGED_IN = 'IS_LOGGED_IN';
+const IS_VERIFIED = 'IS_VERIFIED';
 const userId = 'userId';
 const userDisplayName = 'userDisplayName';
 const userEmail = 'userEmail';
@@ -157,6 +162,7 @@ const TYPE_DOC = "doc";
 const TYPE_LOCATION = "current_location";
 const TYPE_VOICE_NOTE = "voice_note";
 const TYPE_STICKER = "sticker";
+const TYPE_TRANSACTION = "transaction";
 
 //
 const CURRENT_GROUP_ID="current_group_chat_id";

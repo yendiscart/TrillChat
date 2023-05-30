@@ -1,5 +1,8 @@
 import 'dart:io';
 
+import 'package:chat/models/TransactionModel.dart';
+import 'package:file_picker/file_picker.dart';
+
 import '../../main.dart';
 import '../../models/UserModel.dart';
 import '../../services/BaseService.dart';
@@ -8,6 +11,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:path/path.dart';
+
+import '../models/ChatMessageModel.dart';
 
 class UserService extends BaseService {
   FirebaseFirestore fireStore = FirebaseFirestore.instance;
@@ -35,6 +40,68 @@ class UserService extends BaseService {
 
   Future<void> updateUserStatus(Map data, String id) async {
     return ref!.doc(id).update(data as Map<String, Object?>);
+  }
+
+  Future<void> updateBalance(double balance, String id) async {
+
+    var currentBalance=await getUserById(val: id);
+    var newBalance=0.0;
+    if(currentBalance.balance!=null){
+      newBalance=currentBalance.balance!+balance;
+    }else{
+      newBalance=currentBalance.balance!;
+    }
+    Map<String,dynamic> presenceStatusTrue = {
+      'balance': newBalance,
+    };
+
+    return ref!.doc(id).update(presenceStatusTrue as Map<String, Object?>);
+  }
+
+  Future<String> transferBalance(double amount, String senderId, String receiverId) async {
+    // Get the sender's current balance
+    if (senderId== receiverId) {
+      // Handle the case where the sender doesn't have enough balance
+      print('Same User');
+      return 'Transfer failed';
+    }
+    var sender = await getUserById(val: senderId);
+
+    if (sender.balance == null) {
+      // Handle the case where the sender doesn't have a balance
+      print('Sender has no balance');
+      return 'Has no balance';
+    }
+
+    // Check if the sender has enough balance to transfer
+    if (sender.balance! < amount) {
+      // Handle the case where the sender doesn't have enough balance
+      print('Insufficient balance');
+      return 'Insufficient balance';
+    }
+
+    // Get the receiver's current balance
+    var receiver = await getUserById(val: receiverId);
+
+    if (receiver.balance == null) {
+      // Handle the case where the receiver doesn't have a balance
+      print('Receiver has no balance');
+      receiver.balance=0.0;
+    }
+    // Update the balances
+    // var senderNewBalance = sender.balance! - amount;
+
+    // var receiverNewBalance = receiver.balance! + amount;
+
+    // Update the sender's balance
+    await updateBalance(-amount, senderId);
+
+    // Update the receiver's balance
+    await updateBalance(amount, receiverId);
+
+    // Print the updated balances
+    await chatMessage(sender, receiver, amount);
+    return 'Transfer success';
   }
 
   Future<UserModel> getUser({String? email}) {
@@ -134,4 +201,26 @@ class UserService extends BaseService {
     });
   }
 
+
+  Future<String> chatMessage(UserModel? sender,UserModel? receiverUser,double? amount) async{
+    ChatMessageModel data=new ChatMessageModel();
+    data.receiverId = receiverUser!.uid;
+    data.senderId = sender!.uid;
+    data.message ='${amount.toString()}';
+    data.isMessageRead = false;
+    data.stickerPath = '';
+    data.createdAt = DateTime.now().millisecondsSinceEpoch;
+    data.isEncrypt = false;
+    data.messageType=MessageType.TRANSACTION.name;
+    await chatMessageService.addMessage(data).then((value) async {
+
+        // ignore: unnecessary_null_comparison
+        await chatMessageService
+            .addMessageToDb(senderDoc: value, data: data, sender: sender, user: receiverUser, isRequest: false)
+            .then((value) {
+          //
+        });
+    });
+    return 'ok';
+  }
 }

@@ -54,13 +54,16 @@ class SettingItemWidget extends StatelessWidget {
         children: [
           leading ?? SizedBox(),
           if (leading != null) 5.height,
-          Text(
-            title.validate(),
-            style: TextStyle(
-              fontSize: 12,
+          Expanded(
+            child: Text(
+              title.validate(),
+              style: TextStyle(
+                fontSize: 12,
+                color: titleTextColor
+              ),
+              maxLines: 1,
+              // overflow: TextOverflow.ellipsis,
             ),
-            maxLines: 1,
-            // overflow: TextOverflow.ellipsis,
           ),
           4.height.visible(subTitle.validate().isNotEmpty),
           if (subTitle.validate().isNotEmpty)

@@ -150,6 +150,7 @@ class _DashboardScreenState extends State<DashboardScreen> with SingleTickerProv
                   }
                 } else if (tabIndex == 1) {
                   if (value == 4) {
+                    print("Tusahr Tab index ............"+ tabIndex.toString());
                     ServicesScreen().launch(context);
                   }
                 } else {
@@ -167,7 +168,7 @@ class _DashboardScreenState extends State<DashboardScreen> with SingleTickerProv
                   return dashboardPopUpMenuItem;
                 else if (tabIndex == 1)
                   return statusPopUpMenuItem;
-                else if (tabIndex == 4)
+                else if (tabIndex == 3)
                   return servicesPopUpMenuItem;
                 else
                   return chatLogPopUpMenuItem;

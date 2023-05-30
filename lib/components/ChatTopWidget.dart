@@ -106,7 +106,23 @@ class ChatAppBarWidgetState extends State<ChatAppBarWidget> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(data.name!, style: TextStyle(color: whiteColor)),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Expanded(child: Text(data.name!, style: TextStyle(color: whiteColor),overflow: TextOverflow.ellipsis)),
+                          SizedBox(width: 2.0,),
+                          Flexible(
+                            child: Visibility(
+                              visible: data.isVerified??false,
+                              child: Icon(
+                                Icons.verified_rounded,
+                                color: Colors.blue,
+                                size: 18,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                       4.height,
                       data.isPresence!
                           ? Text('online'.translate, style: secondaryTextStyle(color: Colors.white70))

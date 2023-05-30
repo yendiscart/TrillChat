@@ -7,6 +7,8 @@ class LogModel {
   String? callStatus;
   String? callType;
   String? timestamp;
+  bool? isVerifiedCaller;
+  bool? isVerifiedReceiver;
 
   LogModel({
     this.logId,
@@ -17,6 +19,8 @@ class LogModel {
     this.callStatus,
     this.callType,
     this.timestamp,
+    this.isVerifiedCaller,
+    this.isVerifiedReceiver,
   });
   factory LogModel.fromJson(Map<String, dynamic> json) {
     return LogModel(
@@ -28,6 +32,8 @@ class LogModel {
       callType: json['callType'],
       callStatus: json['call_status'],
       timestamp: json['timestamp'],
+      isVerifiedCaller: json['isVerifiedCaller']==1?true:false,
+      isVerifiedReceiver: json['isVerifiedReceiver']==1?true:false,
     );
   }
 
@@ -41,6 +47,8 @@ class LogModel {
     data['call_status'] = this.callStatus;
     data['timestamp'] = this.timestamp;
     data['callType'] = this.callType;
+    data['isVerifiedReceiver'] = this.isVerifiedReceiver! ? 1 : 0;
+    data['isVerifiedCaller'] = this.isVerifiedCaller!?1:0;
 
     return data;
   }

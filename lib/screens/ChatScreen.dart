@@ -27,6 +27,7 @@ import 'package:nb_utils/nb_utils.dart';
 import 'package:paginate_firestore/paginate_firestore.dart';
 
 import '../utils/VoiceNoteRecordWidget.dart';
+import 'TransferScreen.dart';
 
 class ChatScreen extends StatefulWidget {
   final UserModel? receiverUser;
@@ -144,6 +145,8 @@ class ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
         data.messageType = MessageType.DOC.name;
       } else if (type == TYPE_VOICE_NOTE) {
         data.messageType = MessageType.VOICE_NOTE.name;
+      }else if (type == TYPE_TRANSACTION) {
+        data.messageType = MessageType.TRANSACTION.name;
       } else {
         data.messageType = MessageType.TEXT.name;
         data.message = encryptData(messageCont.text);
@@ -380,7 +383,21 @@ class ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
             children: [
               Text('Message Request', style: boldTextStyle(color: Colors.white)),
               8.height,
-              Text('if you accept the invite, ${widget.receiverUser!.name.validate()} can message you.', style: primaryTextStyle(color: Colors.white70)),
+              Row(
+                children: [
+                  Expanded(child: Text('if you accept the invite, ${widget.receiverUser!.name.validate()} can message you.', style: primaryTextStyle(color: Colors.white70))),
+                  /*Visibility(
+                    // if visibility is true, the child
+                    // widget will show otherwise hide
+                    visible: widget.receiverUser!.isVerified??false,
+                    child: Icon(
+                      Icons.verified_rounded,
+                      color: Colors.blue,
+                      size: 18,
+                    ),
+                  ),*/
+                ],
+              ),
               16.height,
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -421,7 +438,8 @@ class ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                       }).catchError((e) {
                         log(e);
                       });
-                      chatRequestService.updateDocument({"requestStatus": RequestStatus.Accepted.index}, widget.receiverUser!.uid).then((value) => null).catchError(
+
+                      chatRequestService.updateChatRequest(widget.receiverUser!.uid,RequestStatus.Accepted.index).then((value) => null).catchError(
                             (e) {
                               log(e.toString());
                             },
@@ -676,6 +694,18 @@ class ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                       );
                     },
                   ),
+
+                  iconsBackgroundWidget(context, name: "Transfer", iconData: Icons.swap_horiz, color: Colors.cyan.shade500).onTap(
+                        () async {
+                      showConfirmDialog(
+                        context,
+                        "Are you sure you want to transfer ?",
+                        onAccept: () async {
+                          TransferScreen(userTo: widget.receiverUser!,).launch(context, pageRouteAnimation: PageRouteAnimation.SlideBottomTop);
+                        },
+                      );
+                    },
+                  ),
                 ],
               ),
             ),
@@ -689,6 +719,7 @@ class ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     Widget buildChatRequestWidget(AsyncSnapshot<bool> snap) {
       if (snap.hasData) {
+        print("Tusahr request is ........... "+snap.data!.toString());
         return getRequestedWidget(snap.data!);
       } else if (snap.hasError) {
         return getRequestedWidget(false);

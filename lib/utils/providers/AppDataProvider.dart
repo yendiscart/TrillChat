@@ -15,7 +15,7 @@ List<PopupMenuItem> chatScreenPopUpMenuItem = [
   PopupMenuItem(value: 1, child: Observer(builder: (_) => Text('view_Contact'.translate, style: primaryTextStyle()))),
   PopupMenuItem(value: 2, child: Observer(builder: (_) => Text('report'.translate, style: primaryTextStyle()))),
   PopupMenuItem(value: 3, child: Observer(builder: (_) => Text('block'.translate, style: primaryTextStyle()))),
-  PopupMenuItem(value: 4, child: Observer(builder: (_) => Text('clear_Chat'.translate, style: primaryTextStyle()))),
+   PopupMenuItem(value: 4, child: Observer(builder: (_) => Text('clear_Chat'.translate, style: primaryTextStyle()))),
 ];
 
 List<PopupMenuItem> statusPopUpMenuItem = [
@@ -27,7 +27,7 @@ List<PopupMenuItem> chatLogPopUpMenuItem = [
 ];
 
 List<PopupMenuItem> servicesPopUpMenuItem = [
-  PopupMenuItem(value: 4, child: Observer(builder: (_) => Text('clear_Call_Logs'.translate, style: primaryTextStyle()))),
+  // PopupMenuItem(value: 4, child: Observer(builder: (_) => Text('clear_Call_Logs'.translate, style: primaryTextStyle()))),
 ];
 
 List<FontSizeModel> fontSizes() {

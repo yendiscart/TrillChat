@@ -131,7 +131,23 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
       child: Column(
         children: [
           16.height,
-          Text("${currentUser.name}", style: boldTextStyle(letterSpacing: 0.5)),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("${currentUser.name}", style: boldTextStyle(letterSpacing: 0.5)),
+              SizedBox(width: 2.0,),
+              Visibility(
+                // if visibility is true, the child
+                // widget will show otherwise hide
+                visible: currentUser.isVerified??false,
+                child: Icon(
+                  Icons.verified_rounded,
+                  color: Colors.blue,
+                  size: 18,
+                ),
+              )
+            ],
+          ),
           8.height,
           Text(currentUser.phoneNumber.validate().substring(0, currentUser.phoneNumber!.length - 3) + "***", style: secondaryTextStyle()),
           8.height,

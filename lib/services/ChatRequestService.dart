@@ -52,5 +52,25 @@ class ChatRequestService extends BaseService {
     return await ref!.where('requestStatus', isEqualTo: RequestStatus.Pending.index).get().then((value) {
       return value.docs.length;
     });
+  } 
+  Future<int> updateChatRequest(String? receiverId,int statusIndex) async {
+    // Get the document snapshot
+    final docSnapshot = await ref!.doc(receiverId).get();
+
+// Check if the document exists
+    if (docSnapshot.exists) {
+      // Document exists, update it
+      await ref!.doc(docSnapshot.id).update({"requestStatus": statusIndex});
+      return 1;
+      // Handle success scenario if needed
+    } else {
+      // Document does not exist
+      // Handle the "not-found" scenario
+      print('Document not found');
+      return 0;
+      // Display an error message or take alternative actions
+    }
+
   }
+  
 }

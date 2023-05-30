@@ -20,6 +20,7 @@ class UserModel {
   int? reportUserCount;
   List<DocumentReference>? blockedTo;
   List<DocumentReference>? reportedBy;
+  double? balance;
 
   UserModel({
     this.uid,
@@ -41,6 +42,7 @@ class UserModel {
     this.isActive,
     this.reportUserCount,
     this.deviceId,
+    this.balance,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
@@ -64,6 +66,7 @@ class UserModel {
       caseSearch: json['caseSearch'] != null ? List<String>.from(json['caseSearch']) : [],
       blockedTo: json['blockedTo'] != null ? List<DocumentReference>.from(json['blockedTo']) : [],
       reportedBy: json['reportedBy'] != null ? List<DocumentReference>.from(json['reportedBy']) : [],
+      balance: json['balance'] != null ? (json['balance'] is int ? (json['balance'] as int).toDouble() : json['balance'] as double) : 0.0,
     );
   }
 
@@ -88,6 +91,7 @@ class UserModel {
     data['lastSeen'] = this.lastSeen;
     data['oneSignalPlayerId'] = this.oneSignalPlayerId;
     data['deviceId'] = this.deviceId;
+    data['balance'] = this.balance;
 
     return data;
   }

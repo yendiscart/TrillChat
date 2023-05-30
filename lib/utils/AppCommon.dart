@@ -139,6 +139,7 @@ UserModel sender = UserModel(
   photoUrl: getStringAsync(userPhotoUrl),
   uid: getStringAsync(userId),
   oneSignalPlayerId: getStringAsync(playerId),
+  isVerified: getBoolAsync(IS_VERIFIED)
 );
 
 void unblockDialog(BuildContext context, {required UserModel receiver}) async {

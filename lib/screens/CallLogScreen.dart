@@ -46,8 +46,7 @@ class _CallLogScreenState extends State<CallLogScreen> {
               itemCount: snap.data!.length,
               itemBuilder: (context, index) {
                 LogModel data = snap.data![index];
-
-                bool hasDialled = data.callStatus == CALLED_STATUS_DIALLED;
+                 bool hasDialled = data.callStatus == CALLED_STATUS_DIALLED;
 
                 return InkWell(
                   onLongPress: () async {
@@ -67,7 +66,22 @@ class _CallLogScreenState extends State<CallLogScreen> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(hasDialled ? data.receiverName.validate() : data.callerName.validate(), style: boldTextStyle(letterSpacing: 0.5)),
+                            Row(
+                              children: [
+                                Text(hasDialled ? data.receiverName.validate() : data.callerName.validate(), style: boldTextStyle(letterSpacing: 0.5)),
+                                SizedBox(width: 2.0,),
+                                Visibility(
+                                  // if visibility is true, the child
+                                  // widget will show otherwise hide
+                                  visible: (hasDialled ? data.isVerifiedReceiver : data.isVerifiedCaller) == true,
+                                  child: Icon(
+                                    Icons.verified_rounded,
+                                    color: Colors.blue,
+                                    size: 18,
+                                  ),
+                                )
+                              ],
+                            ),
                             5.height,
                             Row(
                               children: [
@@ -85,12 +99,14 @@ class _CallLogScreenState extends State<CallLogScreen> {
                                   UserModel receiverData = UserModel(
                                     name: data.receiverName,
                                     photoUrl: data.receiverPic,
+                                    isVerified: data.isVerifiedReceiver
                                   );
                                   UserModel sender = UserModel(
                                     name: getStringAsync(userDisplayName),
                                     photoUrl: getStringAsync(userPhotoUrl),
                                     uid: getStringAsync(userId),
                                     oneSignalPlayerId: getStringAsync(playerId),
+                                    isVerified: getBoolAsync(IS_VERIFIED)
                                   );
                                   return await Permissions.cameraAndMicrophonePermissionsGranted()
                                       ? CallFunctions.dial(
@@ -107,9 +123,10 @@ class _CallLogScreenState extends State<CallLogScreen> {
                                   UserModel receiverData = UserModel(
                                     name: data.receiverName,
                                     photoUrl: data.receiverPic,
+                                    isVerified: data.isVerifiedReceiver
                                   );
                                   UserModel sender = UserModel(
-                                      name: getStringAsync(userDisplayName), photoUrl: getStringAsync(userPhotoUrl), uid: getStringAsync(userId), oneSignalPlayerId: getStringAsync(playerId));
+                                      name: getStringAsync(userDisplayName), photoUrl: getStringAsync(userPhotoUrl), uid: getStringAsync(userId), oneSignalPlayerId: getStringAsync(playerId),isVerified: getBoolAsync(IS_VERIFIED));
                                   return await Permissions.cameraAndMicrophonePermissionsGranted() ? CallFunctions.dial(context: context, from: sender, to: receiverData) : {};
                                 },
                               ),

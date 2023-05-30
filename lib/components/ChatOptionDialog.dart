@@ -27,6 +27,7 @@ class ChatOptionDialogState extends State<ChatOptionDialog> {
     photoUrl: getStringAsync(userPhotoUrl),
     uid: getStringAsync(userId),
     oneSignalPlayerId: getStringAsync(playerId),
+    isVerified: getBoolAsync(IS_VERIFIED),
   );
 
   @override

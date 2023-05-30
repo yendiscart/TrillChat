@@ -127,6 +127,7 @@ class AuthService {
       setValue(userMobileNumber, userModel.phoneNumber.validate());
       setValue(isEmailLogin, userModel.isEmailLogin.validate());
       setValue(IS_LOGGED_IN, true);
+      setValue(IS_VERIFIED, userModel.isVerified??false);
 
       //Login Details to AppStore
       loginStore.setPhotoUrl(aPhotoUrl: userModel.photoUrl.validate());
