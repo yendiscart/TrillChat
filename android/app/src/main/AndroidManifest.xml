@@ -44,7 +44,13 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
+      <!--  <activity
+            android:name=".CustomActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:requestLegacyExternalStorage="true"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />-->
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />

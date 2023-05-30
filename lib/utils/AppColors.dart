@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 const primaryColor = Color(0xFFDB4D75);
+const primarySecondColor = Color(0xFFFF80AB);
 const secondaryColor = Color(0xFFD51111);
 const chatColor = Color(0xFFDC292F);
 const scaffoldColorDark = Color(0xFF090909);

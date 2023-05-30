@@ -1,9 +1,16 @@
+import 'package:chat/screens/MoneyScreen.dart';
+import 'package:chat/screens/SendMoneyScreen.dart';
+import 'package:chat/screens/TransferNewScreen.dart';
+import 'package:chat/screens/WalletScreen.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../components/ChatSettingScreeen.dart';
+
 //import '../../components/UserProfileWidget.dart';
 import '../../main.dart';
 import '../../screens/PickupLayout.dart';
+
 //import '../../screens/SettingHelpScreen.dart';
 import '../../utils/AppColors.dart';
 import '../../utils/AppCommon.dart';
@@ -18,10 +25,14 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 import 'package:chat/settings_item.dart' as s;
 
+import '../components/TitleTextWidget.dart';
+import 'QRScannerScreen.dart';
+
 class ServicesScreen extends StatefulWidget {
   @override
   _ServicesScreenState createState() => _ServicesScreenState();
 }
+
 class MyWebView extends StatefulWidget {
   final String url;
 
@@ -72,7 +83,8 @@ class _ServicesScreenState extends State<ServicesScreen> {
   }
 
   init() async {
-    myBanner = buildBannerAd()..load();
+    myBanner = buildBannerAd()
+      ..load();
   }
 
   BannerAd buildBannerAd() {
@@ -114,7 +126,8 @@ class _ServicesScreenState extends State<ServicesScreen> {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MyWebView(url: 'https://tapgotaxi.ngaiyoo.com')),
+            MaterialPageRoute(builder: (context) =>
+                MyWebView(url: 'https://tapgotaxi.ngaiyoo.com')),
           );
         },
       ),
@@ -132,10 +145,11 @@ class _ServicesScreenState extends State<ServicesScreen> {
         //subTitle: "Buy_and_sell".translate,
         onTap: () {
           Navigator.push(
-        context,
-          MaterialPageRoute(builder: (context) => MyWebView(url: 'https://nyonso.com')),
-         );
-      },
+            context,
+            MaterialPageRoute(
+                builder: (context) => MyWebView(url: 'https://nyonso.com')),
+          );
+        },
       ),
       s.SettingItemWidget(
         titleTextStyle: primaryTextStyle(),
@@ -152,7 +166,8 @@ class _ServicesScreenState extends State<ServicesScreen> {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MyWebView(url: 'https://services.nyonso.com')),
+            MaterialPageRoute(builder: (context) =>
+                MyWebView(url: 'https://services.nyonso.com')),
           );
         },
       ),
@@ -171,7 +186,8 @@ class _ServicesScreenState extends State<ServicesScreen> {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MyWebView(url: 'https://web.nyonso.com')),
+            MaterialPageRoute(
+                builder: (context) => MyWebView(url: 'https://web.nyonso.com')),
           );
         },
       ),
@@ -190,7 +206,8 @@ class _ServicesScreenState extends State<ServicesScreen> {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MyWebView(url: 'https://housing.trillapp.org')),
+            MaterialPageRoute(builder: (context) =>
+                MyWebView(url: 'https://housing.trillapp.org')),
           );
         },
       ),
@@ -209,7 +226,8 @@ class _ServicesScreenState extends State<ServicesScreen> {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MyWebView(url: 'https://freelance.trillapp.org')),
+            MaterialPageRoute(builder: (context) =>
+                MyWebView(url: 'https://freelance.trillapp.org')),
           );
         },
       ),
@@ -228,7 +246,8 @@ class _ServicesScreenState extends State<ServicesScreen> {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MyWebView(url: 'https://music.nyonso.com')),
+            MaterialPageRoute(builder: (context) =>
+                MyWebView(url: 'https://music.nyonso.com')),
           );
         },
       ),
@@ -247,7 +266,8 @@ class _ServicesScreenState extends State<ServicesScreen> {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MyWebView(url: 'https://movies.nyonso.com')),
+            MaterialPageRoute(builder: (context) =>
+                MyWebView(url: 'https://movies.nyonso.com')),
           );
         },
       ),
@@ -266,7 +286,8 @@ class _ServicesScreenState extends State<ServicesScreen> {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MyWebView(url: 'https://jobs.trillapp.org')),
+            MaterialPageRoute(builder: (context) =>
+                MyWebView(url: 'https://jobs.trillapp.org')),
           );
         },
       ),
@@ -285,7 +306,8 @@ class _ServicesScreenState extends State<ServicesScreen> {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MyWebView(url: 'https://booking.trillapp.org')),
+            MaterialPageRoute(builder: (context) =>
+                MyWebView(url: 'https://booking.trillapp.org')),
           );
         },
       ),
@@ -304,7 +326,8 @@ class _ServicesScreenState extends State<ServicesScreen> {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MyWebView(url: 'https://events.trillapp.org')),
+            MaterialPageRoute(builder: (context) =>
+                MyWebView(url: 'https://events.trillapp.org')),
           );
         },
       ),
@@ -323,95 +346,13 @@ class _ServicesScreenState extends State<ServicesScreen> {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MyWebView(url: 'https://courier.nyonso.com')),
+            MaterialPageRoute(builder: (context) =>
+                MyWebView(url: 'https://courier.nyonso.com')),
           );
         },
       ),
 
-      //s.SettingItemWidget(
-        //titleTextStyle: primaryTextStyle(),
-        //title: 'help'.translate,
-        //leading: Icon(Icons.help, color: Colors.pink, size: 22),
-        //subTitle: 'contact_us_privacy_policy'.translate,
-        //subTitleTextStyle: secondaryTextStyle(),
-        //onTap: () {
-          //SettingHelpScreen().launch(context);
-        //},
-      //),
-      //s.SettingItemWidget(
-        //titleTextStyle: primaryTextStyle(),
-        //title: 'chats'.translate,
-        //leading: Icon(Icons.chat, color: Colors.pink, size: 22),
-        //subTitle: 'theme_wallpaper'.translate,
-        //subTitleTextStyle: secondaryTextStyle(),
-        //onTap: () {
-          //ChatSettingScreen().launch(context).then((value) {
-            //setState(() {});
-          //});
-        //},
-      //),
-      //s.SettingItemWidget(
-        //titleTextStyle: primaryTextStyle(),
-        //title: 'logout'.translate,
-        //subTitle: 'visit_again'.translate,
-        //subTitleTextStyle: secondaryTextStyle(),
-        //leading: Icon(Icons.logout, color: Colors.pink, size: 22),
-        //onTap: () async {
-          //bool? res = await showConfirmDialog(
-              //context, "Are you sure you want to logout?",
-              //buttonColor: secondaryColor);
-          //if (res ?? false) {
-            //Map<String, dynamic> presenceStatusFalse = {
-              //'isPresence': false,
-              //'lastSeen': DateTime.now().millisecondsSinceEpoch,
-              //'oneSignalPlayerId': '',
-            //};
-            //userService.updateUserStatus(
-                //presenceStatusFalse, getStringAsync(userId));
-            //deviceService.removeUser(
-                //context: context, uid: getStringAsync(userId));
-            //authService.logout(context);
-          //}
-        //},
-      //),
-      //s.SettingItemWidget(
-        //titleTextStyle: primaryTextStyle(),
-        //title: 'Delete_Account'.translate,
-        //subTitleTextStyle: secondaryTextStyle(),
-        //leading:
-            //Icon(MaterialIcons.delete, color: Colors.pink, size: 22),
-        //onTap: () async {
-          //bool? res = await showConfirmDialog(
-              //context, "Are you sure you want to delete this account?",
-              //buttonColor: secondaryColor);
-          //if (res ?? false) {
-            //appStore.setLoading(true);
-            //authService
-                //.deleteUserPermenant(uid: getStringAsync(userId))
-                //.then((value) {
-              //deviceService.removeUser(
-                  //context: context, uid: getStringAsync(userId));
-              //authService.logout(context);
-              //appStore.setLoading(false);
-            //}).catchError((e) {
-              //appStore.setLoading(false);
-              //log(e);
-            //});
-          //}
-        //},
-      //),
-      //s.SettingItemWidget(
-        //titleTextStyle: primaryTextStyle(),
-        //title: 'invite_a_friend'.translate,
-        //subTitleTextStyle: secondaryTextStyle(),
-        //leading: Icon(Icons.group, color: Colors.pink, size: 22),
-        //onTap: () {
-          //PackageInfo.fromPlatform().then((value) {
-            //Share.share(
-                //'Share $AppName app\n\n$playStoreBaseURL${value.packageName}');
-         // });
-        //},
-      //),
+
     ];
 
     return PickupLayout(
@@ -421,51 +362,186 @@ class _ServicesScreenState extends State<ServicesScreen> {
           child: Column(
             children: [
               //Container(child: UserProfileWidget()),
-              Stack(
-                alignment: Alignment.bottomCenter,
-                children: [
-                  Container(
-                    margin: EdgeInsets.all(15),
-                    height: MediaQuery.of(context).size.height * 0.7,
-                    // color: Color.fromARGB(185, 29, 117, 48),
-                    child: GridView.builder(
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: _list.length,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          childAspectRatio: 1.3,
-                          crossAxisCount: 3,
-                          crossAxisSpacing: 5,
-                          mainAxisSpacing: 5,
-                        ),
-                        itemBuilder: (ctx, i) {
-                          return _list[i];
-                        }),
-                  ),
-                  Positioned(
-                    bottom: 0,
-                    right: 0,
-                    left: 0,
-                    child: Column(
+              Container(
+                height: 85,
+                margin: EdgeInsets.symmetric(horizontal: 15.0,vertical: 12),
+                width: double.infinity,
+
+                decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.all(Radius.circular(18)),
+                  color: Colors.pink.shade100,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Column(
+                      mainAxisAlignment:MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        //Text('from'.translate, style: secondaryTextStyle())
-                            //.center(),
-                        6.height,
-                        //Text('TrillChat',
-                                //style: boldTextStyle(
-                                   // letterSpacing: 2, color: primaryColor))
-                            //.center(),
-                        16.height,
-                        if (myBanner != null)
-                          SizedBox(
-                            child: AdWidget(ad: myBanner!),
-                            height: AdSize.banner.height.toDouble(),
-                            width: context.width(),
+                        Padding(
+                          padding: const EdgeInsets.all(0.0),
+                          child: IconButton(
+                            padding: EdgeInsets.zero,
+                            icon: Icon(MdiIcons.swapHorizontalBold,color: Colors.grey.shade800,size: 50,),
+                            onPressed: () {
+                              // Handle button press
+                              TransferNewScreen().launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
+                            },
                           ),
+                        ),
+                        Text('transfer'.translate,style: TextStyle(color: Colors.grey.shade800),),
                       ],
                     ),
+                    SizedBox(height: 30,width: 1,
+                      child: Container(color: Colors.grey.shade400,),),
+                    Column(
+                      mainAxisAlignment:MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(0.0),
+                          child: IconButton(
+                            padding: EdgeInsets.zero,
+                            icon: Icon(MdiIcons.cash,color: Colors.grey.shade800,size: 50,),
+                            onPressed: () {
+                              // Handle button press
+                              MoneyScreen().launch(context, pageRouteAnimation: PageRouteAnimation.Slide);
+                            },
+                          ),
+                        ),
+                        Text('money'.translate,style: TextStyle(color: Colors.grey.shade800),),
+                      ],
+                    ),
+                    SizedBox(height: 30,width: 1,
+                  child: Container(color: Colors.grey.shade400,),),
+                    Column(
+                      mainAxisAlignment:MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(0.0),
+                          child: IconButton(
+                            padding: EdgeInsets.zero,
+                            icon: Icon(MdiIcons.wallet,color: Colors.grey.shade800,size: 50,),
+                            onPressed: () {
+                              // Handle button press
+                            Navigator.pushNamed(context, '/wallet');
+                            },
+                          ),
+                        ),
+                        Text('wallet'.translate,style: TextStyle(color: Colors.grey.shade800),),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 5,),
+              Align(
+                alignment: Alignment.topLeft,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 15.0),
+                  child: TitleText(
+                    text: "services".translate,
+                    color: Colors.black,
                   ),
-                ],
+                ),
+              ),
+              /*Container(
+                margin: EdgeInsets.only(left: 20,right: 20,top: 10),
+                decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.all(Radius.circular(18)),
+                  color: Colors.green.shade300,
+                ),
+                padding: EdgeInsets.all(16),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Column(
+                          children: [
+                            IconButton(
+                              icon: Icon(Icons.swap_horiz,color: Colors.white,size: 40,),
+                              onPressed: () {
+                                // Handle button press
+                              },
+                            ),
+                            Text('Transfer',style: TextStyle(color: Colors.white),),
+                          ],
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            IconButton(
+                              icon: Icon(Icons.wallet_outlined,color: Colors.white,size: 40,),
+                              onPressed: () {
+                                // Handle button press
+                              },
+                            ),
+                            Text('Gallery',style: TextStyle(color: Colors.white),),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),*/
+
+              Expanded(
+                child: Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.all(15),
+                      height: MediaQuery
+                          .of(context)
+                          .size
+                          .height * 0.7,
+                      // color: Color.fromARGB(185, 29, 117, 48),
+                      child: GridView.builder(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          itemCount: _list.length,
+                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            childAspectRatio: 1.3,
+                            crossAxisCount: 3,
+                            crossAxisSpacing: 5,
+                            mainAxisSpacing: 5,
+                          ),
+                          itemBuilder: (ctx, i) {
+                            return _list[i];
+                          }),
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      right: 0,
+                      left: 0,
+                      child: Column(
+                        children: [
+                          //Text('from'.translate, style: secondaryTextStyle())
+                          //.center(),
+                          6.height,
+                          //Text('TrillChat',
+                          //style: boldTextStyle(
+                          // letterSpacing: 2, color: primaryColor))
+                          //.center(),
+                          16.height,
+                          if (myBanner != null)
+                            SizedBox(
+                              child: AdWidget(ad: myBanner!),
+                              height: AdSize.banner.height.toDouble(),
+                              width: context.width(),
+                            ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -487,7 +563,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
                     titleTextStyle: primaryTextStyle(),
                     title: 'chats'.translate,
                     leading:
-                        Icon(Icons.chat, color: textSecondaryColor, size: 22),
+                    Icon(Icons.chat, color: textSecondaryColor, size: 22),
                     //subTitle: 'theme_wallpaper'.translate,
                     subTitleTextStyle: secondaryTextStyle(),
                     onTap: () {
@@ -508,7 +584,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
                   SettingItemWidget(
                     titleTextStyle: primaryTextStyle(),
                     leading:
-                        Icon(Icons.shopping_bag, color: textSecondaryColor),
+                    Icon(Icons.shopping_bag, color: textSecondaryColor),
                     title: 'online_shopping'.translate,
                     //subTitle: "Buy_and_sell".translate,
                     onTap: () {
@@ -519,7 +595,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
                     titleTextStyle: primaryTextStyle(),
                     title: 'help'.translate,
                     leading:
-                        Icon(Icons.help, color: textSecondaryColor, size: 22),
+                    Icon(Icons.help, color: textSecondaryColor, size: 22),
                     subTitle: 'contact_us_privacy_policy'.translate,
                     subTitleTextStyle: secondaryTextStyle(),
                     onTap: () {
@@ -532,7 +608,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
                     //subTitle: 'visit_again'.translate,
                     subTitleTextStyle: secondaryTextStyle(),
                     leading:
-                        Icon(Icons.logout, color: textSecondaryColor, size: 22),
+                    Icon(Icons.logout, color: textSecondaryColor, size: 22),
                     onTap: () async {
                       bool? res = await showConfirmDialog(
                           context, "Are you sure you want to logout?",
@@ -540,7 +616,9 @@ class _ServicesScreenState extends State<ServicesScreen> {
                       if (res ?? false) {
                         Map<String, dynamic> presenceStatusFalse = {
                           'isPresence': false,
-                          'lastSeen': DateTime.now().millisecondsSinceEpoch,
+                          'lastSeen': DateTime
+                              .now()
+                              .millisecondsSinceEpoch,
                           'oneSignalPlayerId': '',
                         };
                         userService.updateUserStatus(
@@ -583,11 +661,12 @@ class _ServicesScreenState extends State<ServicesScreen> {
                     title: 'invite_a_friend'.translate,
                     subTitleTextStyle: secondaryTextStyle(),
                     leading:
-                        Icon(Icons.group, color: textSecondaryColor, size: 22),
+                    Icon(Icons.group, color: textSecondaryColor, size: 22),
                     onTap: () {
                       PackageInfo.fromPlatform().then((value) {
                         Share.share(
-                            'Share $AppName app\n\n$playStoreBaseURL${value.packageName}');
+                            'Share $AppName app\n\n$playStoreBaseURL${value
+                                .packageName}');
                       });
                     },
                   ),
@@ -601,8 +680,8 @@ class _ServicesScreenState extends State<ServicesScreen> {
                         .center(),
                     4.height,
                     Text('TrillChat',
-                            style: boldTextStyle(
-                                letterSpacing: 2, color: primaryColor))
+                        style: boldTextStyle(
+                            letterSpacing: 2, color: primaryColor))
                         .center(),
                     16.height,
                     if (myBanner != null)

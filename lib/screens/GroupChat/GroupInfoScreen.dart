@@ -373,7 +373,22 @@ class _GroupInfoScreenState extends State<GroupInfoScreen> {
                                             Row(
                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               children: [
-                                                Text(userModelList[index].uid == getStringAsync(userId) ? 'You' : '${userModelList[index].name.validate().capitalizeFirstLetter()}', style: primaryTextStyle()),
+                                               Row(
+                                                 children: [
+                                                   Text(userModelList[index].uid == getStringAsync(userId) ? 'You' : '${userModelList[index].name.validate().capitalizeFirstLetter()}', style: primaryTextStyle()),
+                                                   SizedBox(width: 2.0,),
+                                                   Visibility(
+                                                     // if visibility is true, the child
+                                                     // widget will show otherwise hide
+                                                     visible: userModelList[index].isVerified??false,
+                                                     child: Icon(
+                                                       Icons.verified_rounded,
+                                                       color: Colors.blue,
+                                                       size: 18,
+                                                     ),
+                                                   ),
+                                                 ],
+                                               ),
                                                 Container(
                                                   decoration: boxDecorationWithRoundedCorners(border: Border.all(color: primaryColor), borderRadius: radius(4)),
                                                   padding: EdgeInsets.all(2),

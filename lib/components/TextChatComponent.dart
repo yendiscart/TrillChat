@@ -13,6 +13,7 @@ class TextChatComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("Tushar message is text : "+decryptedData(data.message!));
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: data.isMe! ? CrossAxisAlignment.end : CrossAxisAlignment.start,

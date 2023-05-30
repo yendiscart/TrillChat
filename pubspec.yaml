@@ -63,6 +63,12 @@ dependencies:
   open_file: ^3.2.1
   webview_flutter: ^3.0.4
   badges: ^3.1.1
+  http: ^0.13.4
+  flutter_paypal: ^0.0.7
+  barcode_widget: ^2.0.2
+  flutter_barcode_scanner: ^2.0.0
+  material_design_icons_flutter: ^6.0.7096
+
 
   #location
   geolocator: ^9.0.2
@@ -75,6 +81,7 @@ dependencies:
 
   flutter_localizations:
     sdk: flutter
+  flutter_stripe: ^5.0.0
 
 dev_dependencies:
   flutter_test:

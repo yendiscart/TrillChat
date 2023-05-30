@@ -175,7 +175,13 @@ class CreateGroupScreenState extends State<CreateGroupScreen> {
                                     ).cornerRadiusWithClipRRect(50)
                                   : cachedImage(data.photoUrl, width: 55, height: 55, fit: BoxFit.cover).cornerRadiusWithClipRRect(30).center(),
                               4.height,
-                              Text(data.name.validate(), overflow: TextOverflow.ellipsis, style: secondaryTextStyle(size: 12))
+                              Row(
+                                children: [
+                                  Text(data.name.validate(), overflow: TextOverflow.ellipsis, style: secondaryTextStyle(size: 12)),
+                                  SizedBox(width: 2.0,),
+
+                                ],
+                              )
                             ],
                           ));
                     }),

@@ -58,8 +58,7 @@ class _ChatRequestScreenState extends State<ChatRequestScreen> {
                                 return Text(val.error.toString(), style: primaryTextStyle());
                               } else {
                                 if (val.hasData && val.data != null) {
-                                  return SettingItemWidget(
-                                    padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                                  return ListTile(
                                     leading: val.data!.photoUrl!.isEmpty
                                         ? Container(
                                             height: 50,
@@ -67,6 +66,7 @@ class _ChatRequestScreenState extends State<ChatRequestScreen> {
                                             padding: EdgeInsets.all(10),
                                             color: primaryColor,
                                             child: Text(val.data!.name.validate()[0].capitalizeFirstLetter(), style: secondaryTextStyle(color: Colors.white)).center().fit(),
+
                                           ).cornerRadiusWithClipRRect(50).onTap(() {
                                             showDialog(
                                               context: context,
@@ -86,7 +86,23 @@ class _ChatRequestScreenState extends State<ChatRequestScreen> {
                                               },
                                             );
                                           }),
-                                    title: val.data!.name.validate(),
+                                    title: Row(
+                                      children: [
+                                        Text('${val.data!.name.validate()}'),
+                                        SizedBox(width: 2,),
+                                        Visibility(
+                                          // if visibility is true, the child
+                                          // widget will show otherwise hide
+                                          visible: val.data!.isVerified??false,
+                                          child: Icon(
+                                            Icons.verified_rounded,
+                                            color: Colors.blue,
+                                            size: 18,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                   
                                     // subTitle: data.createdAt!.toDate().timeAgo,
                                     onTap: () async {
                                       ChatScreen(val.data!).launch(context);

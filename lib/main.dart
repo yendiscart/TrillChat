@@ -1,4 +1,8 @@
+import 'package:chat/screens/TransactionScreen.dart';
+import 'package:chat/screens/WalletScreen.dart';
 import 'package:chat/services/DeviceService.dart';
+import 'package:chat/services/PayOutService.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 import '../../models/FileModel.dart';
 import '../../models/Language.dart';
@@ -39,6 +43,7 @@ CallService callService = CallService();
 NotificationService notificationService = NotificationService();
 StoryService storyService = StoryService();
 ChatRequestService chatRequestService = ChatRequestService();
+PayOutService payOutService = PayOutService();
 FirebaseFirestore fireStore = FirebaseFirestore.instance;
 
 GroupChatMessageService groupChatMessageService=GroupChatMessageService();
@@ -77,7 +82,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp();
-
+  Stripe.publishableKey = "pk_test_51HMsYfGjHWuypmQRj3coo0cfBzQkmcvWvoIz8j31KyRmF5WQf2svLwwffKBQ8LzR47kF201I9dSDMWoAa4rQ5BIB00l0PyT9IY";
   Function? originalOnError = FlutterError.onError;
 
   FlutterError.onError = (FlutterErrorDetails errorDetails) async {
@@ -152,7 +157,14 @@ class MyApp extends StatelessWidget {
         localizationsDelegates: [AppLocalizations.delegate, GlobalMaterialLocalizations.delegate, GlobalWidgetsLocalizations.delegate],
         localeResolutionCallback: (locale, supportedLocales) => locale,
         locale: Locale(appStore.selectedLanguageCode),
-        home: SplashScreen(),
+        initialRoute: '/',
+        // Define the named routes
+        routes: {
+          '/': (context) => SplashScreen(),
+          '/wallet': (context) => WalletScreen(),
+          '/transaction': (context) => TransactionScreen(),
+        },
+        // home: SplashScreen(),
         builder: scrollBehaviour(),
       ),
     );

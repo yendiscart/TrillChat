@@ -23,7 +23,8 @@ class SqliteMethods implements LogInterface {
   static String callStatus = 'call_status';
   static String timestamp = 'timestamp';
   static String callType = 'callType';
-
+  static String isVerifiedCaller = 'isVerifiedCaller';
+  static String isVerifiedReceiver = 'isVerifiedReceiver';
   static Future<Database>? initInstance() async {
     Directory dir = await getApplicationDocumentsDirectory();
     String path = join(dir.path, getStringAsync(userId));
@@ -49,7 +50,7 @@ class SqliteMethods implements LogInterface {
   }
 
   _onCreate(Database db, int version) async {
-    String createTableQuery = "CREATE TABLE $tableName ($id INTEGER PRIMARY KEY, $callerName TEXT, $callerPic TEXT, $receiverName TEXT, $receiverPic TEXT, $callStatus TEXT, $timestamp TEXT, $callType TEXT)";
+    String createTableQuery = "CREATE TABLE $tableName ($id INTEGER PRIMARY KEY, $callerName TEXT, $callerPic TEXT, $receiverName TEXT, $receiverPic TEXT, $callStatus TEXT, $timestamp TEXT, $callType TEXT,$isVerifiedCaller INTEGER,$isVerifiedReceiver INTEGER)";
 
     await db.execute(createTableQuery);
     print("table created");

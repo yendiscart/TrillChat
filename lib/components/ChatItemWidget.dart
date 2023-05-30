@@ -1,3 +1,5 @@
+import 'package:chat/components/TransactionChatComponent.dart';
+
 import '../../components/AudioPlayComponent.dart';
 import '../../components/ImageChatComponent.dart';
 import '../../components/StickerChatComponent.dart';
@@ -78,6 +80,7 @@ class _ChatItemWidgetState extends State<ChatItemWidget> {
     // }
 
     Widget chatItem(String? messageTypes) {
+      // print("Message tupe is..........."+widget.data!.message.toString()+"   "+messageTypes.toString());
       switch (messageTypes) {
         case TEXT:
           return TextChatComponent(data: widget.data!, time: time);
@@ -163,6 +166,8 @@ class _ChatItemWidgetState extends State<ChatItemWidget> {
 
         case STICKER:
           return StickerChatComponent(data: widget.data!, time: time, padding: customPadding(messageTypes));
+        case TRANSACTION:
+          return TransactionChatComponent(data: widget.data!, time: time);
 
         default:
           return Container();
@@ -230,7 +235,9 @@ class _ChatItemWidgetState extends State<ChatItemWidget> {
                       color: widget.data!.isMe.validate()
                           ? appStore.isDarkMode
                               ? primaryColor
-                              : senderMessageColor
+                              : widget.data!.messageType != MessageType.TRANSACTION.name
+                          ?senderMessageColor
+                          :primaryColor
                           : context.cardColor,
                       borderRadius: widget.data!.isMe.validate()
                           ? radiusOnly(bottomLeft: chatMsgRadius, topLeft: chatMsgRadius, bottomRight: chatMsgRadius, topRight: 0)

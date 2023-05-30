@@ -28,7 +28,9 @@ class ChatMessageService extends BaseService {
   }
 
   Future<DocumentReference> addMessage(ChatMessageModel data) async {
+    print("Tushar message send request ..............................");
     var doc = await ref!.doc(data.senderId).collection(data.receiverId!).add(data.toJson());
+    print("Tushar message send request .............................."+doc.id);
     doc.update({'id': doc.id});
     Map<String, dynamic> sendData = {'id': doc.id};
     sendData.putIfAbsent("isEncrypt", () => true);
@@ -37,7 +39,7 @@ class ChatMessageService extends BaseService {
 
   Future<void> addMessageToDb({required DocumentReference senderDoc, required ChatMessageModel data, UserModel? sender, UserModel? user, File? image, bool isRequest = false}) async {
     String imageUrl = '';
-
+    print("Tushar message send request ..............................for save db............");
     if (image != null) {
       String fileName = basename(image.path);
       Reference storageRef = _storage.ref().child("$CHAT_DATA_IMAGES/${getStringAsync(userId)}/$fileName");
@@ -246,6 +248,7 @@ encryptData(String contentData) {
 }
 
 decryptedData(String encryptedData) {
+  print("Tushar encrypted data :"+encryptedData);
   final key = encrypt.Key.fromUtf8(dummyContent);
   final iv = encrypt.IV.fromLength(16);
   final encrypter = encrypt.Encrypter(encrypt.AES(key));

@@ -9,6 +9,8 @@ class CallModel {
   String? channelId;
   bool? hasDialed;
   bool? isVoice;
+  bool? isVerifiedCaller;
+  bool? isVerifiedReceiver;
 
   CallModel({
     this.callerId,
@@ -21,6 +23,8 @@ class CallModel {
     this.hasDialed,
     this.isVoice,
     this.callType,
+    this.isVerifiedCaller,
+    this.isVerifiedReceiver,
   });
 
   factory CallModel.fromJson(Map<String, dynamic> json) {
